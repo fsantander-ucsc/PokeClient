@@ -20,6 +20,7 @@ public class PokeClient {
         pokeGUI ventana = new pokeGUI();
         ventana.setVisible(true);
         ventana.setLocationRelativeTo(null);
+        ventana.setResizable(false);
         
         //poke = abreviatura de pokemon
         /*try {
