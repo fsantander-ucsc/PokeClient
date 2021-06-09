@@ -26,7 +26,6 @@ public class PokeClient {
             String nombre = "Pokemon";
             Registry registry = LocateRegistry.getRegistry("localhost");
             irPokemon poke = (irPokemon) registry.lookup(nombre);
-            //System.out.println("Respuesta: " + poke.consultaPokemon("1"));
         } catch (Exception e) {
             System.out.println(e);
         }
