@@ -27,6 +27,7 @@ public class pokeGUI extends javax.swing.JFrame {
         initComponents();
         initMyComponents();
         initLista();
+        initBankStats();
     }
 
     /**
@@ -70,13 +71,19 @@ public class pokeGUI extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextAreaBatalla = new javax.swing.JTextArea();
         jButtonIniciarBatalla = new javax.swing.JButton();
+        jDialogBank = new javax.swing.JDialog();
+        jLabelTitle = new javax.swing.JLabel();
+        jLabelActualBalance = new javax.swing.JLabel();
+        jLabelNumberBalance = new javax.swing.JLabel();
+        jTextFieldAddAmount = new javax.swing.JTextField();
+        jButtonAddAmount = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
         jButtonPokeHoroscopo = new javax.swing.JButton();
         jButtonPokeConsulta = new javax.swing.JButton();
         jButtonSafari = new javax.swing.JButton();
         jButtonBatalla = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonPokeBank = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Poke Horóscopo");
@@ -341,6 +348,61 @@ public class pokeGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitle.setText("Poke Bank");
+
+        jLabelActualBalance.setText("Balance Total Actual:");
+
+        jLabelNumberBalance.setText("0");
+
+        jTextFieldAddAmount.setText("0");
+        jTextFieldAddAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldAddAmountKeyTyped(evt);
+            }
+        });
+
+        jButtonAddAmount.setText("Agregar");
+        jButtonAddAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddAmountActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogBankLayout = new javax.swing.GroupLayout(jDialogBank.getContentPane());
+        jDialogBank.getContentPane().setLayout(jDialogBankLayout);
+        jDialogBankLayout.setHorizontalGroup(
+            jDialogBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogBankLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(jDialogBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDialogBankLayout.createSequentialGroup()
+                        .addGroup(jDialogBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldAddAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelActualBalance))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jDialogBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonAddAmount)
+                            .addComponent(jLabelNumberBalance))))
+                .addContainerGap(112, Short.MAX_VALUE))
+        );
+        jDialogBankLayout.setVerticalGroup(
+            jDialogBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogBankLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabelTitle)
+                .addGap(56, 56, 56)
+                .addGroup(jDialogBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelActualBalance)
+                    .addComponent(jLabelNumberBalance))
+                .addGap(59, 59, 59)
+                .addGroup(jDialogBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldAddAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddAmount))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -379,7 +441,12 @@ public class pokeGUI extends javax.swing.JFrame {
 
         jButton5.setText("jButton5");
 
-        jButton6.setText("jButton6");
+        jButtonPokeBank.setText("Poke Bank");
+        jButtonPokeBank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPokeBankActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -389,7 +456,7 @@ public class pokeGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(170, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton6)
+                    .addComponent(jButtonPokeBank)
                     .addComponent(jButton5)
                     .addComponent(jButtonBatalla)
                     .addComponent(jButtonSafari)
@@ -413,7 +480,7 @@ public class pokeGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(jButtonPokeBank)
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
@@ -441,8 +508,20 @@ public class pokeGUI extends javax.swing.JFrame {
             errorMsg(e);
         }
     }
+    private void initBankStats() {
+        try{
+            Registry registry = LocateRegistry.getRegistry("localhost");
+            irPokemon poke = (irPokemon) registry.lookup(nombre);
+            
+            this.jLabelNumberBalance.setText(poke.verBalance());
+            this.BankStats = poke.verBalance();
+        }catch(Exception e){
+            errorMsg(e);
+        }
+    }
     private final DefaultComboBoxModel modelAnho = new DefaultComboBoxModel();
     private final DefaultComboBoxModel modelListaPokemon = new DefaultComboBoxModel();
+    private String BankStats = new String();
     private void jButtonPokeHoroscopo_svcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPokeHoroscopo_svcActionPerformed
         try {
             Registry registry = LocateRegistry.getRegistry("localhost");
@@ -619,6 +698,38 @@ public class pokeGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonIniciarBatallaActionPerformed
 
+    private void jButtonAddAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAmountActionPerformed
+        try{
+            Registry registry = LocateRegistry.getRegistry("localhost");
+            irPokemon poke = (irPokemon) registry.lookup(nombre);
+            
+            float value = Float.valueOf(this.jTextFieldAddAmount.getText().toString());
+            
+            poke.agregarDinero(value);
+            this.initBankStats();
+            this.jTextFieldAddAmount.setText("0");
+        }catch(Exception e){
+            errorMsg(e);
+        }
+    }//GEN-LAST:event_jButtonAddAmountActionPerformed
+
+    private void jTextFieldAddAmountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAddAmountKeyTyped
+        char key = evt.getKeyChar();
+        
+        if(!Character.isDigit(key)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldAddAmountKeyTyped
+
+    private void jButtonPokeBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPokeBankActionPerformed
+        JButton parent = (JButton) evt.getSource();
+        Window window = SwingUtilities.windowForComponent(parent);
+        this.jDialogBank.setBounds(window.getBounds());
+        this.jDialogBank.setVisible(true);
+        this.jDialogBank.setLocationRelativeTo(null);
+        this.jDialogBank.setResizable(false);
+    }//GEN-LAST:event_jButtonPokeBankActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -677,9 +788,10 @@ public class pokeGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jBu;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonAddAmount;
     private javax.swing.JButton jButtonBatalla;
     private javax.swing.JButton jButtonIniciarBatalla;
+    private javax.swing.JButton jButtonPokeBank;
     private javax.swing.JButton jButtonPokeConsulta;
     private javax.swing.JButton jButtonPokeConsulta_svc;
     private javax.swing.JButton jButtonPokeHoroscopo;
@@ -691,6 +803,7 @@ public class pokeGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSafari_Pokebola_svc;
     private javax.swing.JComboBox<String> jComboBoxBatalla;
     private javax.swing.JComboBox<String> jComboBoxPokeHoroscopo;
+    private javax.swing.JDialog jDialogBank;
     private javax.swing.JDialog jDialogBatalla;
     private javax.swing.JDialog jDialogPokeConsulta;
     private javax.swing.JDialog jDialogPokeHoroscopo;
@@ -699,7 +812,10 @@ public class pokeGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelActualBalance;
+    private javax.swing.JLabel jLabelNumberBalance;
     private javax.swing.JLabel jLabelPokeConsulta;
+    private javax.swing.JLabel jLabelTitle;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -713,6 +829,7 @@ public class pokeGUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaPokeConsulta;
     private javax.swing.JTextField jTextAreaPokeHoroscopo;
     private javax.swing.JTextArea jTextAreaSafari;
+    private javax.swing.JTextField jTextFieldAddAmount;
     private javax.swing.JTextField jTextPokeConsulta;
     // End of variables declaration//GEN-END:variables
 }
