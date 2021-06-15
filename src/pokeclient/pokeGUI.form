@@ -114,9 +114,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jLabelPokeConsulta_ingreso" min="-2" pref="114" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="jLabelPokeConsulta" alignment="2" max="32767" attributes="0"/>
+                      <Component id="jLabelPokeConsulta_titulo" alignment="2" max="32767" attributes="0"/>
                       <Component id="jTextPokeConsulta" alignment="2" max="32767" attributes="0"/>
                       <Component id="jButtonPokeConsulta_svc" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -134,9 +136,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Component id="jLabelPokeConsulta" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelPokeConsulta_titulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextPokeConsulta" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabelPokeConsulta_ingreso" max="32767" attributes="0"/>
+                      <Component id="jTextPokeConsulta" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButtonPokeConsulta_svc" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -149,7 +154,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabelPokeConsulta">
+        <Component class="javax.swing.JLabel" name="jLabelPokeConsulta_titulo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -191,6 +196,12 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextPokeConsultaKeyTyped"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelPokeConsulta_ingreso">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Ingrese N&#xb0; Pok&#xe9;mon:"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

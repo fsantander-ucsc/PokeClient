@@ -48,12 +48,13 @@ public class pokeGUI extends javax.swing.JFrame {
         jButtonPokeHoroscopo_svc = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jDialogPokeConsulta = new javax.swing.JDialog();
-        jLabelPokeConsulta = new javax.swing.JLabel();
+        jLabelPokeConsulta_titulo = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaPokeConsulta = new javax.swing.JTextArea();
         jButtonPokeConsulta_svc = new javax.swing.JButton();
         jTextPokeConsulta = new javax.swing.JTextField();
+        jLabelPokeConsulta_ingreso = new javax.swing.JLabel();
         jDialogSafari = new javax.swing.JDialog();
         jBu = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -152,9 +153,9 @@ public class pokeGUI extends javax.swing.JFrame {
 
         jDialogPokeConsulta.setTitle("Poke Servicios - Consulta Pokemon");
 
-        jLabelPokeConsulta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPokeConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPokeConsulta.setText("Poke Consulta");
+        jLabelPokeConsulta_titulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelPokeConsulta_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPokeConsulta_titulo.setText("Poke Consulta");
 
         jTextAreaPokeConsulta.setEditable(false);
         jTextAreaPokeConsulta.setColumns(20);
@@ -175,14 +176,19 @@ public class pokeGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabelPokeConsulta_ingreso.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelPokeConsulta_ingreso.setText("Ingrese N° Pokémon:");
+
         javax.swing.GroupLayout jDialogPokeConsultaLayout = new javax.swing.GroupLayout(jDialogPokeConsulta.getContentPane());
         jDialogPokeConsulta.getContentPane().setLayout(jDialogPokeConsultaLayout);
         jDialogPokeConsultaLayout.setHorizontalGroup(
             jDialogPokeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogPokeConsultaLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
+                .addGap(23, 23, 23)
+                .addComponent(jLabelPokeConsulta_ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogPokeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabelPokeConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelPokeConsulta_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextPokeConsulta)
                     .addComponent(jButtonPokeConsulta_svc))
                 .addGap(135, 135, 135))
@@ -196,9 +202,11 @@ public class pokeGUI extends javax.swing.JFrame {
             jDialogPokeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogPokeConsultaLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabelPokeConsulta)
+                .addComponent(jLabelPokeConsulta_titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextPokeConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDialogPokeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelPokeConsulta_ingreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextPokeConsulta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonPokeConsulta_svc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -883,7 +891,8 @@ public class pokeGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelActualBalance;
     private javax.swing.JLabel jLabelNumberBalance;
-    private javax.swing.JLabel jLabelPokeConsulta;
+    private javax.swing.JLabel jLabelPokeConsulta_ingreso;
+    private javax.swing.JLabel jLabelPokeConsulta_titulo;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JLabel jLabelTitleListaPokemon;
     private javax.swing.JLabel jLabelTitulo;
