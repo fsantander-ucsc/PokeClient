@@ -77,12 +77,16 @@ public class pokeGUI extends javax.swing.JFrame {
         jLabelNumberBalance = new javax.swing.JLabel();
         jTextFieldAddAmount = new javax.swing.JTextField();
         jButtonAddAmount = new javax.swing.JButton();
+        jDialogListaPokemon = new javax.swing.JDialog();
+        jLabelTitleListaPokemon = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextAreaListaPokemon = new javax.swing.JTextArea();
         jLabelTitulo = new javax.swing.JLabel();
         jButtonPokeHoroscopo = new javax.swing.JButton();
         jButtonPokeConsulta = new javax.swing.JButton();
         jButtonSafari = new javax.swing.JButton();
         jButtonBatalla = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonListaPokemonCapturados = new javax.swing.JButton();
         jButtonPokeBank = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -403,6 +407,35 @@ public class pokeGUI extends javax.swing.JFrame {
                 .addContainerGap(96, Short.MAX_VALUE))
         );
 
+        jLabelTitleListaPokemon.setText("Lista Pokemon");
+
+        jTextAreaListaPokemon.setColumns(20);
+        jTextAreaListaPokemon.setRows(5);
+        jScrollPane5.setViewportView(jTextAreaListaPokemon);
+
+        javax.swing.GroupLayout jDialogListaPokemonLayout = new javax.swing.GroupLayout(jDialogListaPokemon.getContentPane());
+        jDialogListaPokemon.getContentPane().setLayout(jDialogListaPokemonLayout);
+        jDialogListaPokemonLayout.setHorizontalGroup(
+            jDialogListaPokemonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogListaPokemonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5)
+                .addContainerGap())
+            .addGroup(jDialogListaPokemonLayout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(jLabelTitleListaPokemon)
+                .addContainerGap(158, Short.MAX_VALUE))
+        );
+        jDialogListaPokemonLayout.setVerticalGroup(
+            jDialogListaPokemonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogListaPokemonLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabelTitleListaPokemon)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -439,7 +472,12 @@ public class pokeGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("jButton5");
+        jButtonListaPokemonCapturados.setText("Lista Pokemon");
+        jButtonListaPokemonCapturados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaPokemonCapturadosActionPerformed(evt);
+            }
+        });
 
         jButtonPokeBank.setText("Poke Bank");
         jButtonPokeBank.addActionListener(new java.awt.event.ActionListener() {
@@ -457,7 +495,7 @@ public class pokeGUI extends javax.swing.JFrame {
                 .addContainerGap(170, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jButtonPokeBank)
-                    .addComponent(jButton5)
+                    .addComponent(jButtonListaPokemonCapturados)
                     .addComponent(jButtonBatalla)
                     .addComponent(jButtonSafari)
                     .addComponent(jButtonPokeConsulta)
@@ -478,7 +516,7 @@ public class pokeGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonBatalla)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(jButtonListaPokemonCapturados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonPokeBank)
                 .addContainerGap(81, Short.MAX_VALUE))
@@ -741,6 +779,25 @@ public class pokeGUI extends javax.swing.JFrame {
         this.jDialogBank.setResizable(false);
     }//GEN-LAST:event_jButtonPokeBankActionPerformed
 
+    private void jButtonListaPokemonCapturadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaPokemonCapturadosActionPerformed
+        //LoadLista
+        try{
+            Registry registry = LocateRegistry.getRegistry("localhost");
+            irPokemon poke = (irPokemon) registry.lookup(nombre);
+            
+            this.jTextAreaListaPokemon.setText(poke.getListaPokemonCapturados().toString());
+        }catch(Exception e){
+            errorMsg(e);
+        }
+        //Abrir Dialog
+        JButton parent = (JButton) evt.getSource();
+        Window window = SwingUtilities.windowForComponent(parent);
+        this.jDialogListaPokemon.setBounds(window.getBounds());
+        this.jDialogListaPokemon.setVisible(true);
+        this.jDialogListaPokemon.setLocationRelativeTo(null);
+        this.jDialogListaPokemon.setResizable(false);
+    }//GEN-LAST:event_jButtonListaPokemonCapturadosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -798,10 +855,10 @@ public class pokeGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jBu;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonAddAmount;
     private javax.swing.JButton jButtonBatalla;
     private javax.swing.JButton jButtonIniciarBatalla;
+    private javax.swing.JButton jButtonListaPokemonCapturados;
     private javax.swing.JButton jButtonPokeBank;
     private javax.swing.JButton jButtonPokeConsulta;
     private javax.swing.JButton jButtonPokeConsulta_svc;
@@ -816,6 +873,7 @@ public class pokeGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxPokeHoroscopo;
     private javax.swing.JDialog jDialogBank;
     private javax.swing.JDialog jDialogBatalla;
+    private javax.swing.JDialog jDialogListaPokemon;
     private javax.swing.JDialog jDialogPokeConsulta;
     private javax.swing.JDialog jDialogPokeHoroscopo;
     private javax.swing.JDialog jDialogSafari;
@@ -827,16 +885,19 @@ public class pokeGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNumberBalance;
     private javax.swing.JLabel jLabelPokeConsulta;
     private javax.swing.JLabel jLabelTitle;
+    private javax.swing.JLabel jLabelTitleListaPokemon;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextArea jTextAreaBatalla;
+    private javax.swing.JTextArea jTextAreaListaPokemon;
     private javax.swing.JTextArea jTextAreaPokeConsulta;
     private javax.swing.JTextField jTextAreaPokeHoroscopo;
     private javax.swing.JTextArea jTextAreaSafari;
