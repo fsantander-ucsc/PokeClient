@@ -706,7 +706,7 @@ public class pokeGUI extends javax.swing.JFrame {
             float value = Float.valueOf(this.jTextFieldAddAmount.getText().toString());
             
             poke.agregarDinero(value);
-            this.initBankStats();
+            this.jLabelNumberBalance.setText(poke.verBalance());
             this.jTextFieldAddAmount.setText("0");
         }catch(Exception e){
             errorMsg(e);
@@ -722,6 +722,17 @@ public class pokeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldAddAmountKeyTyped
 
     private void jButtonPokeBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPokeBankActionPerformed
+        //Ejecutar Upgrades de datos
+        try{
+            Registry registry = LocateRegistry.getRegistry("localhost");
+            irPokemon poke = (irPokemon) registry.lookup(nombre);
+
+            this.jLabelNumberBalance.setText(poke.verBalance());
+        }catch(Exception e){
+            errorMsg(e);
+        }
+
+        //Abrir Dialog
         JButton parent = (JButton) evt.getSource();
         Window window = SwingUtilities.windowForComponent(parent);
         this.jDialogBank.setBounds(window.getBounds());
